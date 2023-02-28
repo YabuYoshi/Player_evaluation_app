@@ -1,0 +1,19 @@
+<table>
+  <h2>ユーザー情報編集</h2>
+  <%= form_with model: @user, url: user_path(current_user) do |f| %>
+  <tbody>
+    <tr>
+      <td>ユーザー名</td>
+      <td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ユーザー名"%></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"メールアドレス"%></td>
+    </tr>
+    <tr>
+      <td><%= f.submit "変更を保存",class:"btn btn-success" %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
