@@ -1,5 +1,6 @@
 class Admin::TeamsController < ApplicationController
   def index
+    @team = Team.new
     @teams = Team.all
   end
 

@@ -1,0 +1,22 @@
+<h2>ユーザー一覧</h2>
+  <table class="table table-bordered">
+    <thead>
+      <th>ユーザーID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+    </thead>
+    <tbody>
+　　　<% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to admin_reviews_path do %>
+          <%= user.name %>
+          <% end %>
+        </td>
+        <td><%= user.email %></td>
+      </tr>
+　　　<% end %>
+    </tbody>
+  </table>
+<%= paginate @users %>
