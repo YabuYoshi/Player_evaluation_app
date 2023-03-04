@@ -4,6 +4,12 @@ class Admin::TeamsController < ApplicationController
     @teams = Team.all
   end
 
+  def show
+    @team = Team.find(params[:id])
+    @player = Player.new
+    @players = @team.players
+  end
+
   def create
     @team = Team.new(team_params)
       if @team.save

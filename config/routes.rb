@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :game_information, only: [:new, :create, :index, :edit, :update]
-    resources :teams,            only: [:index, :create, :edit, :update]
-    resources :players,          only: [:index, :create, :edit, :update]
-    resources :users,            only: [:index]
+    resources :teams,            only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :players,          only: [:create, :edit, :update, :destroy]
+    resources :users,            only: [:index, :show]
     resources :reviews,          only: [:show, :update]
     delete 'destroy_evaluation' => 'reviews#destroy_evaluation'
     delete 'destroy_comment' => 'reviews#destroy_comment'

@@ -16,8 +16,8 @@
    <tr>
     <td><%= team.name %></td>
     <td><%= link_to '編集する', edit_admin_team_path(team), class:"btn btn-success" %></td>
-    <td><%= link_to '削除する', destroy_admin_team_path(team), class:"btn btn-danger" %></td>
-    <td><%= link_to '選手一覧', admin_players_path, class:"btn btn-primary" %></td>
+    <td><%= link_to '削除する', admin_team_path(team), method: :delete, class:"btn btn-danger" %></td>
+    <td><%= link_to '球団詳細', admin_team_path(team.id), class:"btn btn-primary" %></td>
    </tr>
    <% end %>
   </tbody>

@@ -1,0 +1,20 @@
+<h2>選手編集</h2>
+<%= form_with model: @player, url: admin_player_path, method: :patch do |f| %>
+<table>
+    <tbody>
+      <tr>
+       <td>
+        <label for="inputName">球団id</label>
+        <%= f.select :team_id, Team.ids %>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <label for="inputName">選手名</label>
+  　　　　<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"選手名"%>
+       </td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit "変更を保存",class:"btn btn-success" %>
+<% end %>

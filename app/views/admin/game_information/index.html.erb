@@ -1,0 +1,40 @@
+<h2><%#= game_information.game_day %>の試合一覧</h2>
+<p>
+  <%= link_to '＋', new_admin_game_information_path, class:"btn btn-light" %>
+</p>
+
+<table class="table table-bordered">
+  <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+  <tbody>
+    <% @game_informations.each do |game_information| %>
+    <tr>
+      <td>
+        <% if game_information.first_second == true %>
+          <dev class="">
+            <%= team.name %>
+          </div>
+        <% else %>
+          <dev class="">
+            <%= team.name %>
+          </div>
+        <% end %>
+      </td>
+      <td>
+        <% if game_information.first_second == true %>
+          <dev class="">
+            <%= game_information.point %>
+          </div>
+        <% else %>
+          <dev class="">
+            <%= game_information.point %>
+          </div>
+        <% end %>
+      </td>
+      <td><%= link_to '編集する', edit_admin_game_information_path(game_information), class:"btn btn-success" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

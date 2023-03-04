@@ -1,15 +1,11 @@
 class Admin::PlayersController < ApplicationController
-  def index
-    @players = Player.all
-  end
-
   def create
     @player = Player.new(player_params)
       if @player.save
         flash[:notice] = 'ModelClassName was successfully created.'
-        redirect_to admin_players_path
+        redirect_to admin_team_path(@player.team_id)
       else
-        render :index
+        render admin_team_path(@player.team_id)
       end
   end
 
@@ -19,9 +15,10 @@ class Admin::PlayersController < ApplicationController
 
   def update
     @player = Player.find(params[:id])
+    #byebug
       if @player.update(player_params)
         flash[:notice] = 'Player was successfully updated.'
-        redirect_to "/admin/players"
+        redirect_to admin_team_path(@player.team_id)
       else
         render :edit
       end
@@ -30,7 +27,7 @@ class Admin::PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
-    redirect_to "/admin/players"
+    redirect_to admin_team_path(@player.team_id)
   end
 
   private

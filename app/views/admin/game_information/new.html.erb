@@ -1,2 +1,73 @@
-<h1>Admin::GameInformation#new</h1>
-<p>Find me in app/views/admin/game_information/new.html.erb</p>
+<h1>新規試合情報登録</h1>
+<%= form_with model: @game_information, url: admin_game_information_index_path, method: :post do |f| %>
+  <table>
+     <tbody>
+      <tr>
+        <td>球団名</td>
+        <td><%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %></td>
+      </tr>
+      <tr>
+        <td>先行/後攻</td>
+        <td>
+          <%= f.radio_button :first_second, "先行" %>
+        　<%= f.label :game_information_first_second, "先行" %>
+        　<%= f.radio_button :first_second, "後攻" %>
+        　<%= f.label :game_information_first_second, "後攻" %>
+        </td>
+      </tr>
+      <tr>
+        <td>得点</td>
+        <td><%= f.select :point, *[1..99] %></td>
+      </tr>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <td></td>
+      <td>VS</td>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr>
+        <td>球団名</td>
+        <td><%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %></td>
+      </tr>
+      <tr>
+        <td>先行/後攻</td>
+        <td>
+          <%= f.radio_button :first_second, "先行" %>
+        　<%= f.label :game_information_first_second, "先行" %>
+        　<%= f.radio_button :first_second, "後攻" %>
+        　<%= f.label :game_information_first_second, "後攻" %>
+        </td>
+      </tr>
+      <tr>
+        <td>得点</td>
+        <td><%= f.select :point, *[1..99] %></td>
+      </tr>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr>
+        <td><%= f.submit '新規登録' %></td>
+      </tr>
+     </tbody>
+  </table>
+<% end %>

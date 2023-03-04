@@ -1,0 +1,22 @@
+<h2><%= @team.name%> 球団詳細</h2>
+<%= form_with model: @player, url: admin_players_path, method: :post do |f| %>
+<h4>選手名</h4>
+<%= f.text_field :name %>
+<%= f.hidden_field :team_id, value: @team.id %>
+<%= f.submit '新規登録', class:"btn btn-success" %>
+<% end %>
+
+<table>
+  <thead>
+      <th>選手名</th>
+      <th></th>
+  </thead>
+  <tbody>
+   <% @players.each do |player| %>
+   <tr>
+    <td><%= player.name %></td>
+    <td><%= link_to '編集する', edit_admin_player_path(player), class:"btn btn-success" %></td>
+    <td><%= link_to '削除する', admin_player_path(player), method: :delete, class:"btn btn-danger" %></td>
+   <% end %>
+  </tbody>
+</table>
