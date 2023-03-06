@@ -3,22 +3,23 @@
   <%= link_to '＋', new_admin_game_information_path, class:"btn btn-light" %>
 </p>
 
-<table class="table table-bordered">
+<table>
   <thead>
     <th></th>
     <th></th>
     <th></th>
   <tbody>
     <% @game_informations.each do |game_information| %>
+    <td><%= game_information.game_day %></td>
     <tr>
       <td>
         <% if game_information.first_second == true %>
           <dev class="">
-            <%= team.name %>
+            <%= @teams.name %>
           </div>
         <% else %>
           <dev class="">
-            <%= team.name %>
+            <%= @teams.name %>
           </div>
         <% end %>
       </td>
