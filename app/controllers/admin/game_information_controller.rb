@@ -15,7 +15,8 @@ class Admin::GameInformationController < ApplicationController
 
   def index
     @game_informations = GameInformation.all
-    @teams = Team.all
+    @first_team = @game_information.first_team
+    @second_team = @game_information.second_team
   end
 
   def edit
@@ -31,11 +32,11 @@ class Admin::GameInformationController < ApplicationController
         render :edit
       end
   end
-  
+
   private
 
   def game_information_params
-    params.require(:game_information).permit(:game_day, :first_second, :point)
+    params.require(:game_information).permit(:first_team_id, :second_team_id, :game_day, :point)
   end
 
 end

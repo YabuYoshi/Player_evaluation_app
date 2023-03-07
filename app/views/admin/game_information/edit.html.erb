@@ -1,2 +1,70 @@
-<h1>Admin::GameInformation#edit</h1>
-<p>Find me in app/views/admin/game_information/edit.html.erb</p>
+<h1>新規試合情報登録</h1>
+<%= form_with model: @game_information, url: admin_game_information_index_path, method: :patch do |f| %>
+  <table>
+     <tbody>
+      <tr>
+        <td>
+          <label for="inputName">試合日</label>
+          <%= f.text_field :game_day, autofocus: true, id:"inputName", placeholder:"試合日" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="inputName">先行球団名</label>
+          <%= f.select :first_team_id, options_from_collection_for_select(Team.all, :id, :name) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="inputName">得点</label>
+          <%= f.select :point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
+        </td>
+      </tr>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <td></td>
+      <td>VS</td>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr>
+        <td>
+          <label for="inputName">後攻球団名</label>
+          <%= f.select :second_team_id, options_from_collection_for_select(Team.all, :id, :name) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="inputName">得点</label>
+          <%= f.select :point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
+        </td>
+      </tr>
+
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+      <tr><td></td></tr>
+
+      <tr>
+        <td><%= f.submit "変更を保存",class:"btn btn-success" %></td>
+      </tr>
+     </tbody>
+  </table>
+<% end %>
+

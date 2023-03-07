@@ -1,4 +1,4 @@
-<h2><%#= game_information.game_day %>の試合一覧</h2>
+<h2>試合一覧</h2>
 <p>
   <%= link_to '＋', new_admin_game_information_path, class:"btn btn-light" %>
 </p>
@@ -12,28 +12,8 @@
     <% @game_informations.each do |game_information| %>
     <td><%= game_information.game_day %></td>
     <tr>
-      <td>
-        <% if game_information.first_second == true %>
-          <dev class="">
-            <%= @teams.name %>
-          </div>
-        <% else %>
-          <dev class="">
-            <%= @teams.name %>
-          </div>
-        <% end %>
-      </td>
-      <td>
-        <% if game_information.first_second == true %>
-          <dev class="">
-            <%= game_information.point %>
-          </div>
-        <% else %>
-          <dev class="">
-            <%= game_information.point %>
-          </div>
-        <% end %>
-      </td>
+      <td><%= @first_team.name %></td> <td><%= @second_team.name %></td>
+      <td><%= @first_team.point %></td> <td><%= @second_team.point %></td>
       <td><%= link_to '編集する', edit_admin_game_information_path(game_information), class:"btn btn-success" %></td>
     </tr>
     <% end %>
