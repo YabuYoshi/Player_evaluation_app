@@ -1,5 +1,5 @@
 <h1>新規試合情報登録</h1>
-<%= form_with model: @game_information, url: admin_game_information_index_path, method: :patch do |f| %>
+<%= form_with model: @game_information, url: admin_game_information_path, method: :patch do |f| %>
   <table>
      <tbody>
       <tr>
@@ -17,7 +17,7 @@
       <tr>
         <td>
           <label for="inputName">得点</label>
-          <%= f.select :point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
+          <%= f.select :first_team_point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
         </td>
       </tr>
 
@@ -49,7 +49,7 @@
       <tr>
         <td>
           <label for="inputName">得点</label>
-          <%= f.select :point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
+          <%= f.select :second_team_point, *[1..99], autofocus: true, id:"inputName", placeholder:"得点" %>
         </td>
       </tr>
 

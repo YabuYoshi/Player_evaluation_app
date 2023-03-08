@@ -11,8 +11,8 @@
         <td><%= f.select :first_team_id, options_from_collection_for_select(Team.all, :id, :name) %></td>
       </tr>
       <tr>
-        <td>得点</td>
-        <td><%= f.select :point, *[1..99] %></td>
+        <td>先行球団得点</td>
+        <td><%= f.select :first_team_point, *[1..99] %></td>
       </tr>
 
       <tr><td></td></tr>
@@ -39,8 +39,8 @@
         <td><%= f.select :second_team_id, options_from_collection_for_select(Team.all, :id, :name) %></td>
       </tr>
       <tr>
-        <td>得点</td>
-        <td><%= f.select :point, *[1..99] %></td>
+        <td>後攻球団得点</td>
+        <td><%= f.select :second_team_point, *[1..99] %></td>
       </tr>
 
       <tr><td></td></tr>

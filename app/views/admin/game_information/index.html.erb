@@ -12,9 +12,22 @@
     <% @game_informations.each do |game_information| %>
     <td><%= game_information.game_day %></td>
     <tr>
-      <td><%= @first_team.name %></td> <td><%= @second_team.name %></td>
-      <td><%= @first_team.point %></td> <td><%= @second_team.point %></td>
-      <td><%= link_to '編集する', edit_admin_game_information_path(game_information), class:"btn btn-success" %></td>
+      <td><%= game_information.first_team.name %></td> <td><%= game_information.second_team.name %></td>
+    </tr>
+    <tr>
+      <td><%= game_information.first_team_point %></td> <td><%= game_information.second_team_point %></td>
+    </tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr>
+      <td>
+        <div class="text-center">
+          <%= link_to '編集する', edit_admin_game_information_path(game_information), class:"btn btn-success" %>
+        </div>
+      </td>
     </tr>
     <% end %>
   </tbody>
