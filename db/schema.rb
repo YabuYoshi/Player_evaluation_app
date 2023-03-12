@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_08_133005) do
+ActiveRecord::Schema.define(version: 2023_03_12_131315) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,14 +72,15 @@ ActiveRecord::Schema.define(version: 2023_03_08_133005) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "player_id", null: false
+    t.integer "player_id"
     t.integer "user_id", null: false
-    t.integer "game_information_id", null: false
-    t.datetime "datetime", null: false
-    t.decimal "point", null: false
+    t.integer "game_information_id"
+    t.datetime "datetime"
+    t.decimal "point"
     t.text "evaluation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "team_id"
   end
 
   create_table "teams", force: :cascade do |t|

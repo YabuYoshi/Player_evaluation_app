@@ -4,22 +4,23 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(new_review_params)
     @review.user_id = current_user.id
-      if @review.save
+      if @review.save!
         flash[:notice] = 'Review was successfully created.'
-        redirect_to
+        redirect_to review_path(@review.id)
       else
         render :new
       end
   end
 
   def reviews_team
-    @reviews = Review.all
+    @reviews = Review.page(params[:page])
+    @user = current_user
   end
 
   def reviews_user
-    @reviews = Review.all
+    @reviews = Review.page(params[:page])
   end
 
   def show
@@ -49,7 +50,11 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:player_id, :user_id, :game_information_id, :detetime, :point, :evaluation)
+    params.require(:review).permit(:team_id, :user_id, :game_information_id, :detetime, :point, :evaluation)
+  end
+
+  def new_review_params
+    params.require(:review).permit(:team_id, :user_id, :game_information_id, :evaluation)
   end
 
 end

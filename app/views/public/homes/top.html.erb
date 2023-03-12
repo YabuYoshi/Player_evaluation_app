@@ -1,1 +1,28 @@
-<h2>topページ</h2>
+<h2>試合一覧</h2>
+<table>
+  <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+  <tbody>
+    <% @game_informations.each do |game_information| %>
+    <td><%= game_information.game_day %></td>
+    <tr>
+      <td>
+        <%= link_to reviews_team_path(@team) do %>
+        <%= game_information.first_team.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to reviews_team_path(@team) do %>
+        <%= game_information.second_team.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= game_information.first_team_point %></td>
+      <td><%= game_information.second_team_point %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
