@@ -8,16 +8,8 @@
     <% @game_informations.each do |game_information| %>
     <td><%= game_information.game_day %></td>
     <tr>
-      <td>
-        <%= link_to reviews_team_path(@team) do %>
-        <%= game_information.first_team.name %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to reviews_team_path(@team) do %>
-        <%= game_information.second_team.name %>
-        <% end %>
-      </td>
+      <td><%= game_information.first_team.name %></td>
+      <td><%= game_information.second_team.name %></td>
     </tr>
     <tr>
       <td><%= game_information.first_team_point %></td>
@@ -25,4 +17,9 @@
     </tr>
     <% end %>
   </tbody>
+
+  <div class = "section1 text-center">
+    <%= link_to 'All Reviews', reviews_team_path, class:"btn btn-primary" %>
+  </div>
+
 </table>

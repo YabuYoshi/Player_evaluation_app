@@ -2,12 +2,12 @@
 <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
 <p>試合情報</p>
 <%= f.select :game_information_id, options_from_collection_for_select(GameInformation.all, :id, :game_day) %> <br />
-
+<p></p>
 <p>球団名</p>
 <%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %> <br />
-
-<a>総評</a>
-<%= f.text_area :evaluation %> <br />
+<p></p>
+<p>総評</p>
+<%= f.text_area :evaluation, class: 'form-control', size: "1x5" %> <br />
 
 <%= f.submit '新規投稿',class:"btn btn-success"  %>
 

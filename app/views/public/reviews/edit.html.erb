@@ -1,14 +1,18 @@
 <h2>レビュー情報編集</h2>
 <%= form_with model: @review, url: reviews_path, method: :patch do |f| %>
 <p>試合情報</p>
-<%= f.select :game_information_id, options_from_collection_for_select(GameInformation.all, :id, :game_day) %> <br />
-
+<%= @review.game_information.game_day %> <br />
+<p></p>
 <p>球団名</p>
-<%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %> <br />
-
-<a>総評</a>
+<%= @review.team.name %> <br />
+<p></p>
+<p>Pick up Player</p>
+<%= f.select :player_id, options_from_collection_for_select(Player.all, :id, :name) %>
+<%= f.select :point, *[0..5], step: "0.1" %>
+<p></p>
+<p>総評</p>
 <%= f.text_area :evaluation %> <br />
 
-<%= f.submit '新規投稿',class:"btn btn-success"  %>
+<%= f.submit '変更を保存',class:"btn btn-success"  %>
 
 <% end %>
