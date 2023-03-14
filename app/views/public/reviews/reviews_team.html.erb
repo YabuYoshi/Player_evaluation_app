@@ -16,7 +16,7 @@
     <% @reviews.each do |review| %>
     <tr>
       <td>
-        <%= link_to user_path(@user.id) do %>
+        <%= link_to user_path(review.user_id) do %>
         <%= review.user.name %>
         <% end %>
       </td>

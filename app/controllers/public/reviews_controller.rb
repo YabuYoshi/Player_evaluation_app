@@ -16,7 +16,6 @@ class Public::ReviewsController < ApplicationController
 
   def reviews_team
     @reviews = Review.page(params[:page])
-    @user = current_user
   end
 
   def reviews_user
