@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
     @review.user_id = current_user.id
       if @review.save!
         flash[:notice] = 'Review was successfully created.'
-        redirect_to review_path(@review.id)
+        redirect_to edit_review_path(@review.id)
       else
         render :new
       end
@@ -24,6 +24,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -34,7 +35,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
       if @review.update(review_params)
         flash[:notice] = 'Review was successfully updated.'
-        redirect_to
+        redirect_to review_path(@review.id)
       else
         render :edit
       end
@@ -49,7 +50,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:team_id, :user_id, :game_information_id, :detetime, :point, :evaluation)
+    params.require(:review).permit(:team_id, :player_id, :user_id, :game_information_id, :detetime, :point, :evaluation)
   end
 
   def new_review_params

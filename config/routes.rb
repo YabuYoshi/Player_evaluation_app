@@ -30,12 +30,13 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    resources :reviews,      only: [:new, :create, :show, :edit, :update, :destroy]
-    get 'reviews_team' => 'reviews#reviews_team', as: 'reviews_team'
-    get 'reviews_user' => 'reviews#reviews_user', as: 'reviews_user' do
+    resources :reviews,      only: [:new, :create, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only:[:create, :destroy]
     end
+    get 'reviews_team' => 'reviews#reviews_team', as: 'reviews_team'
+    get 'reviews_user' => 'reviews#reviews_user', as: 'reviews_user'
+  
 
   end
 
