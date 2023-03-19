@@ -1,0 +1,39 @@
+<h2>レビュー詳細</h2>
+<p><%= link_to "レビュー削除", admin_review_path(@review.id), method: :delete, class:"btn btn-danger" %></p>
+<table>
+ <tbody>
+   <tr>
+     <td>試合情報</td>
+     <td><%= @review.game_information.game_day %></td>
+   </tr>
+  <tr>
+   <td>球団名</td>
+   <td><%= @review.team.name %></td>
+  </tr>
+  <tr>
+   <td>Pick up Player</td>
+   <td><%= @review.player.name %></td>
+  </tr>
+  <tr>
+   <td>採点</td>
+   <td><%= @review.point %></td>
+  </tr>
+  <tr>
+   <td>総評</td>
+   <td><%= @review.evaluation %></td>
+  </tr>
+  <div>
+    <tr>
+      <td>コメント件数：<%= @review.comments.count %></td>
+    </tr>
+    <tr>
+      <% @review.comments.each do |comment| %>
+      <td><%= comment.user.name %> : <%= comment.comment %></td>
+      <td>
+        <%= link_to "削除", admin_destroy_comment_path(comment.review, comment), method: :delete, class:"btn btn-light" %>
+      </td>
+     <% end %>
+    </tr>
+  </div>
+ </tbody>
+</table>

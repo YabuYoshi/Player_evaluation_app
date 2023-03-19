@@ -14,12 +14,17 @@ class Public::ReviewsController < ApplicationController
       end
   end
 
+  def reviews_all_team
+    @reviews = Review.page(params[:page])
+  end
+
   def reviews_team
     @reviews = Review.page(params[:page])
   end
 
-  def reviews_user
-    @reviews = Review.page(params[:page])
+  def index
+    @user = User.find(params[:user_id])
+    @reviews = @user.reviews
   end
 
   def show
@@ -44,7 +49,15 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to
+    redirect_to :show
+  end
+
+  def search
+    if params[:team_name].present?
+      @reviews = Review.where('team_name LIKE ?', "%#{params[:team_name]}%")
+    else
+      @reviews = Review.none
+    end
   end
 
   private

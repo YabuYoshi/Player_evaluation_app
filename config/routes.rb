@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :teams,            only: [:index, :show, :create, :edit, :update, :destroy]
     resources :players,          only: [:create, :edit, :update, :destroy]
     resources :users,            only: [:index, :show]
-    resources :reviews,          only: [:show, :update]
+    resources :reviews,          only: [:show, :update, :destroy]
     delete 'destroy_evaluation' => 'reviews#destroy_evaluation'
     delete 'destroy_comment' => 'reviews#destroy_comment'
   end
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     root to: "homes#top"
 
     resources :users,  only: [:show, :edit, :update] do
+      resources :reviews do
+        resource :favorites, only: [:create, :destroy]
+        resources :comments, only:[:create, :destroy]
+      end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -34,9 +38,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only:[:create, :destroy]
     end
+    get 'reviews_all_team' => 'reviews#reviews_all_team', as: 'reviews_all_team'
     get 'reviews_team' => 'reviews#reviews_team', as: 'reviews_team'
-    get 'reviews_user' => 'reviews#reviews_user', as: 'reviews_user'
-  
+
 
   end
 

@@ -1,4 +1,8 @@
 <h2>全チームレビュー一覧</h2>
+<p>
+  <%= link_to 'レビューを行う', new_review_path, class:"btn btn-success" %>
+</p>
+
 <table>
   <thead>
       <th>ユーザー名</th>
@@ -12,7 +16,7 @@
     <% @reviews.each do |review| %>
     <tr>
       <td>
-        <%= link_to admin_user_path(review.user) do %>
+        <%= link_to user_reviews_path(review.user) do %>
         <%= review.user.name %>
         <% end %>
       </td>
@@ -20,7 +24,7 @@
       <td><%= review.team.name %></td>
       <td><%= review.game_information.game_day %></td>
       <td><%= "#{review.comments.count} コメント" %></td>
-      <td><%= link_to 'レビュー詳細', admin_review_path(review), class:"btn btn-success" %></td>
+      <td><%= link_to 'レビュー詳細', review_path(review), class:"btn btn-success" %></td>
     </tr>
     <% end %>
   </tbody>
