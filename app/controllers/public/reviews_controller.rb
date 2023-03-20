@@ -16,6 +16,11 @@ class Public::ReviewsController < ApplicationController
 
   def reviews_all_team
     @reviews = Review.page(params[:page])
+    if params[:team_name]
+      @team_name = params[:team_name]
+      @teams = Team.where(name: params[:team_name])
+      @reviews = Review.where(team_id: @teams.pluck(:id)).page(params[:page])
+    end
   end
 
   def reviews_team

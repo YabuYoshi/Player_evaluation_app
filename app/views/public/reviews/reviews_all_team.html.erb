@@ -3,6 +3,10 @@
   <%= link_to 'レビューを行う', new_review_path, class:"btn btn-success" %>
 </p>
 
+<% if @team_name %>
+　絞り込み: <%= @team_name %>
+<% end %>
+
 <table>
   <thead>
       <th>ユーザー名</th>
@@ -21,7 +25,7 @@
         <% end %>
       </td>
       <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= review.team.name %></td>
+      <td><%= link_to review.team.name, reviews_all_team_path(team_name: review.team.name) %></td>
       <td><%= review.game_information.game_day %></td>
       <td><%= "#{review.comments.count} コメント" %></td>
       <td><%= link_to 'レビュー詳細', review_path(review), class:"btn btn-success" %></td>
