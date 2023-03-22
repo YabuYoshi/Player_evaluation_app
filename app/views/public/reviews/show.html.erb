@@ -1,5 +1,9 @@
 <h2>レビュー詳細</h2>
-<p><%= link_to "レビュー削除", review_path(@review.id), method: :delete, class:"btn btn-danger" %></p>
+<p>
+  <% if @review.user == current_user %>
+    <%= link_to "レビュー削除", review_path(@review.id), method: :delete, class:"btn btn-danger" %>
+  <% end %>
+</p>
   <% if @review.favorited_by?(current_user) %>
     <p>
       <%= link_to review_favorites_path(@review), method: :delete do %>
