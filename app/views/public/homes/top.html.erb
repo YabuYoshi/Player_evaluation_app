@@ -1,25 +1,28 @@
 <h2>試合一覧</h2>
-<table>
-  <thead>
-    <th></th>
-    <th></th>
-    <th></th>
-  <tbody>
-    <% @game_informations.each do |game_information| %>
-    <td><%= game_information.game_day %></td>
-    <tr>
-      <td><%= game_information.first_team.name %></td>
-      <td><%= game_information.second_team.name %></td>
-    </tr>
-    <tr>
-      <td><%= game_information.first_team_point %></td>
-      <td><%= game_information.second_team_point %></td>
-    </tr>
-    <% end %>
-  </tbody>
-
   <div class = "section1 text-center">
     <%= link_to 'All Reviews', reviews_all_team_path, class:"btn btn-primary" %>
   </div>
-
+<table>
+  <% @game_informations.each do |game_information| %>
+  <thead>
+    <tr>
+      <th class="h4">試合日：<%= game_information.game_day %></th>
+    </tr>
+  </thead>
+  <tbody class= "row justify-content-center">
+    <tr>
+      <td class="h2"><%= game_information.first_team.name %></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td class="h2"><%= game_information.first_team_point %></td>
+    </tr>
+    <tr><td></td></tr>
+    <tr><td class="h2">-</td></tr>
+    <tr><td></td></tr>
+    <tr>
+      <td class="h2"><%= game_information.second_team_point %></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td class="h2"><%= game_information.first_team.name %></td>
+    </tr>
+  </tbody>
+  <% end %>
 </table>

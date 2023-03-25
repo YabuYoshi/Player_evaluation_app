@@ -6,7 +6,7 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(new_review_params)
     @review.user_id = current_user.id
-      if @review.save!
+      if @review.save
         flash[:notice] = 'Review was successfully created.'
         redirect_to edit_review_path(@review.id)
       else
