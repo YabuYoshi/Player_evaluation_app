@@ -2,27 +2,23 @@
   <div class = "section1 text-center">
     <%= link_to 'All Reviews', reviews_all_team_path, class:"btn btn-primary" %>
   </div>
-<table>
-  <% @game_informations.each do |game_information| %>
+
+  <% @game_informations.each do |day, informations| %>
+  <table class="mx-auto">
   <thead>
     <tr>
-      <th class="h4">試合日：<%= game_information.game_day %></th>
+      <th class="h4">試合日：<%= day %></th>
     </tr>
   </thead>
-  <tbody class= "row justify-content-center">
+  <tbody>
+    <% informations.each do | info | %>
     <tr>
-      <td class="h2"><%= game_information.first_team.name %></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      <td class="h2"><%= game_information.first_team_point %></td>
+      <td class="h2 p-3">
+        <%= info.first_team.name %><%= info.first_team_point %> - <%= info.second_team_point %><%= info.first_team.name %>
+      </td>
     </tr>
-    <tr><td></td></tr>
-    <tr><td class="h2">-</td></tr>
-    <tr><td></td></tr>
-    <tr>
-      <td class="h2"><%= game_information.second_team_point %></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      <td class="h2"><%= game_information.first_team.name %></td>
-    </tr>
+    <% end %>
   </tbody>
+  </table>
   <% end %>
-</table>
+
