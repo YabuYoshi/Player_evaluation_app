@@ -3,32 +3,27 @@
   <%= link_to '＋', new_admin_game_information_path, class:"btn btn-light" %>
 </p>
 
-<table>
+<% @game_informations.each do |day, informations| %>
+ <table class="mx-auto">
   <thead>
-    <th></th>
-    <th></th>
-    <th></th>
+    <tr>
+      <th class="h4">試合日：<%= day %></th>
+    </tr>
+  </thead>
   <tbody>
-    <% @game_informations.each do |game_information| %>
-    <td><%= game_information.game_day %></td>
+    <% informations.each do | info | %>
     <tr>
-      <td><%= game_information.first_team.name %></td> <td><%= game_information.second_team.name %></td>
+      <td class="h2 p-3">
+        <%= info.first_team.name %><%= info.first_team_point %> - <%= info.second_team_point %><%= info.second_team.name %>
+      </td>
     </tr>
-    <tr>
-      <td><%= game_information.first_team_point %></td> <td><%= game_information.second_team_point %></td>
-    </tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
-    <tr>
       <td>
         <div class="text-center">
-          <%= link_to '編集する', edit_admin_game_information_path(game_information), class:"btn btn-success" %>
+          <%= link_to '編集する', edit_admin_game_information_path(informations), class:"btn btn-success" %>
         </div>
       </td>
     </tr>
     <% end %>
   </tbody>
-</table>
+ </table>
+<% end %>
