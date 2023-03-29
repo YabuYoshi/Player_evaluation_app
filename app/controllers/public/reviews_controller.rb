@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
+    @game_informations = GameInformation.all.select(:game_day).distinct
   end
 
   def create
@@ -54,7 +55,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to :show
+    redirect_to user_path(current_user)
   end
 
   def search

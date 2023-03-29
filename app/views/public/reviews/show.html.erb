@@ -1,6 +1,11 @@
 <h2>レビュー詳細</h2>
 <p>
   <% if @review.user == current_user %>
+    <%= link_to "編集", edit_review_path(@review.id), class:"btn btn-success" %>
+  <% end %>
+</p>
+<p>
+  <% if @review.user == current_user %>
     <%= link_to "レビュー削除", review_path(@review.id), method: :delete, class:"btn btn-danger" %>
   <% end %>
 </p>

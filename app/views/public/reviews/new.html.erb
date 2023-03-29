@@ -1,7 +1,7 @@
 <h2>レビュー新規投稿</h2>
 <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
 <p>試合情報</p>
-<%= f.select :game_information_id, options_from_collection_for_select(GameInformation.all, :id, :game_day) %> <br />
+<%= f.select :game_information_id, options_from_collection_for_select(@game_informations, :id, :game_day) %> <br />
 <p></p>
 <p>球団名</p>
 <%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %> <br />

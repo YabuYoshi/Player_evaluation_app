@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :users,            only: [:index, :show]
     resources :reviews,          only: [:show, :update, :destroy]
     delete 'destroy_evaluation' => 'reviews#destroy_evaluation'
-    delete 'destroy_comment' => 'reviews#destroy_comment'
+    delete 'reviews/:review_id/comments/:id' => 'reviews#destroy_comment',as: "destroy_comment"
   end
 
 
