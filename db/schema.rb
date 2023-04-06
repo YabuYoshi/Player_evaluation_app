@@ -77,14 +77,6 @@ ActiveRecord::Schema.define(version: 2023_03_25_105205) do
     t.integer "second_team_point", null: false
   end
 
-  create_table "games", force: :cascade do |t|
-    t.integer "first_team_id", null: false
-    t.integer "second_team_id", null: false
-    t.integer "game_information_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "players", force: :cascade do |t|
     t.integer "team_id", null: false
     t.string "name", null: false
