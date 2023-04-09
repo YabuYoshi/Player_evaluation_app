@@ -1,5 +1,11 @@
 class Public::UsersController < ApplicationController
  def show
+    if user_signed_in?
+      review = current_user.reviews.find_by(player_id: nil)
+      if review
+        redirect_to edit_review_path(review)
+      end
+    end
    @user = current_user
    @reviews = @user.reviews
  end
