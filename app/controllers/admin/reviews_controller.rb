@@ -1,6 +1,7 @@
 class Admin::ReviewsController < ApplicationController
   def index
     @reviews = Review.all
+    @review = Review.find(params[:id])
   end
 
   def show
