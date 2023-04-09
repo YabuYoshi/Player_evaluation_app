@@ -1,16 +1,17 @@
 class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
-    @game_informations = GameInformation.all.select(:game_day).distinct
+    @game_informations = GameInformation.all
   end
 
   def create
     @review = Review.new(new_review_params)
     @review.user_id = current_user.id
-      if @review.save
+      if @review.save!
         flash[:notice] = 'Review was successfully created.'
         redirect_to edit_review_path(@review.id)
       else
+        @game_informations = GameInformation.all
         render :new
       end
   end
