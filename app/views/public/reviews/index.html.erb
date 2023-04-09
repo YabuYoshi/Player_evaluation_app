@@ -11,7 +11,6 @@
       <th>試合日時</th>
       <th>コメント件数</th>
       <th></th>
-      <th></th>
   </thead>
   <tbody>
     <% @reviews.each do |review| %>
@@ -21,11 +20,6 @@
       <td><%= review.game_information.game_day %></td>
       <td><%= "#{review.comments.count} コメント" %></td>
       <td><%= link_to 'レビュー詳細', review_path(review), class:"btn btn-success" %></td>
-      <td>
-        <% if review.user == current_user %>
-          <%= link_to "レビュー削除", review_path(review), method: :delete, class:"btn btn-danger" %>
-        <% end %>
-      </td>
     </tr>
     <% end %>
   </tbody>
